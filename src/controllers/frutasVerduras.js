@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 // 1. GET ALL
 const getAll = async (req, res) => {
     try {
-        const result = await mongodb.getDb().db('tienda_organica').collection('frutas_verduras').find();
+        const result = await mongodb.getDb().db('tienda_organica').collection('fruits_vegetables').find();
         const lists = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -20,7 +20,7 @@ const getSingle = async (req, res) => {
             return res.status(400).json({ message: 'Must use a valid product id to find a product.' });
         }
         const productId = new ObjectId(req.params.id);
-        const result = await mongodb.getDb().db('tienda_organica').collection('frutas_verduras').find({ _id: productId });
+        const result = await mongodb.getDb().db('tienda_organica').collection('fruits_vegetables').find({ _id: productId });
         const lists = await result.toArray();
 
         if (lists.length === 0) {
@@ -43,7 +43,7 @@ const createProduct = async (req, res) => {
             unit: req.body.unit,
             stock: req.body.stock
         };
-        const response = await mongodb.getDb().db('tienda_organica').collection('frutas_verduras').insertOne(product);
+        const response = await mongodb.getDb().db('tienda_organica').collection('fruits_vegetables').insertOne(product);
         if (response.acknowledged) {
             res.status(201).json(response);
         } else {
@@ -67,7 +67,7 @@ const updateProduct = async (req, res) => {
             unit: req.body.unit,
             stock: req.body.stock
         };
-        const response = await mongodb.getDb().db('tienda_organica').collection('frutas_verduras').replaceOne({ _id: productId }, product);
+        const response = await mongodb.getDb().db('tienda_organica').collection('fruits_vegetables').replaceOne({ _id: productId }, product);
         if (response.modifiedCount > 0) {
             res.status(204).send();
         } else {
@@ -85,7 +85,7 @@ const deleteProduct = async (req, res) => {
             return res.status(400).json({ message: 'Must use a valid product id to delete a product.' });
         }
         const productId = new ObjectId(req.params.id);
-        const response = await mongodb.getDb().db('tienda_organica').collection('frutas_verduras').deleteOne({ _id: productId });
+        const response = await mongodb.getDb().db('tienda_organica').collection('fruits_vegetables').deleteOne({ _id: productId });
         if (response.deletedCount > 0) {
             res.status(200).json(response);
         } else {

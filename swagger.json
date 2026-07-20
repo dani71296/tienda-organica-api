@@ -22,7 +22,7 @@
         }
       }
     },
-    "/frutas-verduras/": {
+    "/fruits-vegetables/": {
       "get": {
         "description": "",
         "produces": [
@@ -75,7 +75,7 @@
         }
       }
     },
-    "/frutas-verduras/{id}": {
+    "/fruits-vegetables/{id}": {
       "get": {
         "description": "",
         "produces": [
@@ -170,7 +170,7 @@
         }
       }
     },
-    "/carnes-lacteos/": {
+    "/meats-dairy/": {
       "get": {
         "description": "",
         "produces": [
@@ -223,7 +223,7 @@
         }
       }
     },
-    "/carnes-lacteos/{id}": {
+    "/meats-dairy/{id}": {
       "get": {
         "description": "",
         "produces": [

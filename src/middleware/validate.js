@@ -7,7 +7,7 @@ const productValidationRules = () => {
             .notEmpty()
             .withMessage('Name is required.'),
         body('price')
-            .isFloat({ 放置: 0 })
+            .isFloat({ gt: 0 })
             .withMessage('Price must be a number greater than 0.'),
         body('unit')
             .trim()
@@ -24,7 +24,6 @@ const validate = (req, res, next) => {
     if (errors.isEmpty()) {
         return next();
     }
-
 
     return res.status(400).json({
         errors: errors.array().map(err => ({ field: err.path, message: err.msg }))

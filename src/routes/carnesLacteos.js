@@ -1,14 +1,13 @@
 const router = require('express').Router();
-const carnesLacteosController = require('../controllers/carnesLacteos');
+const meatsDairyController = require('../controllers/carnesLacteos');
 const { productValidationRules, validate } = require('../middleware/validate');
 
-router.get('/', carnesLacteosController.getAll);
-router.get('/:id', carnesLacteosController.getSingle);
+router.get('/', meatsDairyController.getAll);
+router.get('/:id', meatsDairyController.getSingle);
 
+router.post('/', productValidationRules(), validate, meatsDairyController.createProduct);
+router.put('/:id', productValidationRules(), validate, meatsDairyController.updateProduct);
 
-router.post('/', productValidationRules(), validate, carnesLacteosController.createProduct);
-router.put('/:id', productValidationRules(), validate, carnesLacteosController.updateProduct);
-
-router.delete('/:id', carnesLacteosController.deleteProduct);
+router.delete('/:id', meatsDairyController.deleteProduct);
 
 module.exports = router;

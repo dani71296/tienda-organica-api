@@ -6,7 +6,7 @@ let _db;
 
 const initDb = (callback) => {
     if (_db) {
-        console.log('¡La base de datos ya está inicializada!');
+        console.log('Database is already initialized!');
         return callback(null, _db);
     }
 
@@ -22,7 +22,7 @@ const initDb = (callback) => {
 
 const getDb = () => {
     if (!_db) {
-        throw Error('Base de datos no inicializada.');
+        throw Error('Database not initialized.');
     }
     return _db;
 };

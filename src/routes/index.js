@@ -7,7 +7,7 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.get('/', (req, res) => {
     res.send('¡Welcome to the organics foods API!');
 });
-router.use('/frutas-verduras', require('./frutasVerduras'));
-router.use('/carnes-lacteos', require('./carnesLacteos'));
+router.use('/fruits-vegetables', require('./frutasVerduras'));
+router.use('/meats-dairy', require('./carnesLacteos'));
 
 module.exports = router;
