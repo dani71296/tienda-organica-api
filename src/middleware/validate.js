@@ -12,7 +12,9 @@ const productValidationRules = () => {
         body('unit')
             .trim()
             .notEmpty()
-            .withMessage('Unit is required (e.g., kg, piece).'),
+            .withMessage('Unit is required.')
+            .matches(/^[a-zA-Z\s]+$/)
+            .withMessage('Unit must contain only letters (e.g., kg, piece, oz).'),
         body('stock')
             .isInt({ min: 0 })
             .withMessage('Stock must be a positive integer.')
